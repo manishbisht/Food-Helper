@@ -1,0 +1,13 @@
+SearchIntent Tell me the restaurant nearby {Query}
+SearchIntent Tell me the restaurants nearby {Query}
+SearchIntent restaurant nearby {Query}
+SearchIntent restaurants nearby {Query}
+
+AMAZON.HelpIntent help
+AMAZON.HelpIntent help me
+AMAZON.HelpIntent what can I ask
+AMAZON.HelpIntent what can I do
+
+AMAZON.CancelIntent cancel
+
+AMAZON.StopIntent stop
