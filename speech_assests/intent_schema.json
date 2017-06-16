@@ -1,0 +1,22 @@
+{
+  "intents": [
+    {
+      "intent": "SearchIntent",
+      "slots": [
+        {
+          "name": "Query",
+          "type": "SAMPLES"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
