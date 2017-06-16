@@ -19,6 +19,6 @@ if location_data['location_suggestions'][0]['entity_type'] and location_data['lo
     }
     response = requests.get(search_url, params=paramaters, headers=header)
     restaurant_data = json.loads(response.text)
-    if restaurant_data['restaurants'][0]:
-        restaurant_data = restaurant_data['restaurants'][0]
-        print restaurant_data
+    if restaurant_data['restaurants'][0]['restaurant']:
+        restaurant_data = restaurant_data['restaurants'][0]['restaurant']
+        print restaurant_data['name']
