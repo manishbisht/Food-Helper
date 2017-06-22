@@ -133,19 +133,21 @@ def RestaurantSearch(intent, session, query):
 
     search_url = 'https://developers.zomato.com/api/v2.1/search'
 
-    if location_data['location_suggestions'][0]['entity_type'] and location_data['location_suggestions'][0]['entity_id']:
-        paramaters = {
-            'entity_type': location_data['location_suggestions'][0]['entity_type'],
-            'entity_id': location_data['location_suggestions'][0]['entity_id'],
-            'count': '1'
-        }
-        response = requests.get(search_url, params=paramaters, headers=header)
-        restaurant_data = json.loads(response.text)
-        if restaurant_data['restaurants'][0]['restaurant']:
-            restaurant_data = restaurant_data['restaurants'][0]['restaurant']
-            speech_output = 'The nearby restaurant ' + restaurant_data['name'] + ' is at ' + restaurant_data['location']['address']
+    if len(location_data['location_suggestions']) > 0 :
+        if location_data['location_suggestions'][0]['entity_type'] and location_data['location_suggestions'][0]['entity_id']:
+            paramaters = {
+                'entity_type': location_data['location_suggestions'][0]['entity_type'],
+                'entity_id': location_data['location_suggestions'][0]['entity_id'],
+                'count': '1'
+            }
+            response = requests.get(search_url, params=paramaters, headers=header)
+            restaurant_data = json.loads(response.text)
+            if restaurant_data['restaurants'][0]['restaurant']:
+                restaurant_data = restaurant_data['restaurants'][0]['restaurant']
+                speech_output = 'The nearby restaurant ' + restaurant_data['name'] + ' is at ' + restaurant_data['location']['address']
     return build_response(session_attributes, build_speechlet_response(
         card_title, speech_output, reprompt_text, should_end_session))
+
 
 
 # --------------- Events ------------------
